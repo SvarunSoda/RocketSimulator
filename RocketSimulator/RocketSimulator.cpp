@@ -56,15 +56,15 @@ std::string WorldMap[16] = {
     "           ---------  -------      --\\     -----------------        ",
     " /--------/        /  \\-----|     /// ----/                  \\------ ",
     " \\ /----           \\   -\\   /     /-                             /-\\",
-    " /-     \\-       /-      \\-/    -/                           /----   ",
+    " /-     \\-       /-      \\-/ -  -/                           /--/-   ",
     "-         \\   --/             -/ -   \\                    -/        ",
-    "           \\-\\  \\             |-/ \\\\- \\\\---              /          ",
+    "           \\-\\  \\             |-/ \\\\- \\\\---              / /        ",
     "             \\\\               /--\\-\\\\ /    \\    -     /-/           ",
-    "              /---           /      \\/      \\  / \\  /-              ",
+    "              /---           /      \\/      \\  / \\  /- \\            ",
     "              \\   \\          \\--    /        \\/   \\-|               ",
-    "               |   \\            \\   |                               ",
-    "              /    /            |  /                                ",
-    "              | --              \\-/                                 ",
+    "               |   \\            \\   |              \\ \\-\\/-\\\\        ",
+    "              /    /            |  //               -- /    |   /   ",
+    "              | --              \\-/                    \\----/  /    ",
     "              \\/                                                    ",
     "               /                       ----------  -------------    ",
     "  /-----------/\\        --------------/          \\/             |   ",
@@ -148,7 +148,7 @@ void ParticleHit() {
 
     Vector ParticleVector;
 
-    ParticleVector.SetName("Particle" + (ParticleTracker + 1));
+    ParticleVector.SetName("Particle #" + (ParticleTracker + 1));
     ParticleVector.SetOtherName(RocketVector.GetName());
     ParticleVector.SetStartX(rand() % 500 - 500, true);
     ParticleVector.SetStartY(rand() % 500 - 500);
