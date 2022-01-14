@@ -322,21 +322,21 @@ void UpdateRocket1() {
 
     }
 
-    long double rocketTargetAccelHorizontal = (RocketVector1.GetAccel() * cos((M_PI / 180) * RocketVector1.GetAngleY()));
+    long double rocketTargetAccelHorizontal = (RocketVector1.GetAccel() * cos((M_PI / 180) * RocketVector1.GetAnglePitch()));
     
-    if ((RocketVector1.GetAngleY() == 90) || (RocketVector1.GetAngleY() == -90)) {
+    if ((RocketVector1.GetAnglePitch() == 90) || (RocketVector1.GetAnglePitch() == -90)) {
 
         rocketTargetAccelHorizontal = 0;
 
     }
 
-    long double rocketTargetAccelVertical = (RocketVector1.GetAccel() * sin((M_PI / 180) * RocketVector1.GetAngleY()));
+    long double rocketTargetAccelVertical = (RocketVector1.GetAccel() * sin((M_PI / 180) * RocketVector1.GetAnglePitch()));
 
-    long double rocketTargetAccelX = rocketTargetAccelHorizontal * sin((M_PI / 180) * RocketVector1.GetAngleX());
+    long double rocketTargetAccelX = rocketTargetAccelHorizontal * sin((M_PI / 180) * RocketVector1.GetAngleYaw());
     long double rocketTargetAccelY = rocketTargetAccelVertical - gravityAcceleration;
-    long double rocketTargetAccelZ = rocketTargetAccelHorizontal * cos((M_PI / 180) * RocketVector1.GetAngleX());
+    long double rocketTargetAccelZ = rocketTargetAccelHorizontal * cos((M_PI / 180) * RocketVector1.GetAngleYaw());
 
-    if ((RocketVector1.GetAngleY() == 90) || (RocketVector1.GetAngleY() == -90)) {
+    if ((RocketVector1.GetAnglePitch() == 90) || (RocketVector1.GetAnglePitch() == -90)) {
 
         rocketTargetAccelZ = 0;
 
@@ -391,29 +391,29 @@ void UpdateRocket1() {
 
         RocketVector1.UpdateTargetAnglePredictive(RocketVector2);
 
-        long double currentAngleX = RocketVector1.GetAngleX();
-        long double targetAngleX = RocketVector1.GetTargetAngleX();
+        long double currentAngleX = RocketVector1.GetAngleYaw();
+        long double targetAngleX = RocketVector1.GetTargetAngleYaw();
 
         if (currentAngleX < (targetAngleX - TargetErrorTolerance)) {
 
-            RocketVector1.SetAngleX(currentAngleX + AngleChange, false, true);
+            RocketVector1.SetAngleYaw(currentAngleX + AngleChange, false, true);
 
         } else if (currentAngleX > (targetAngleX + TargetErrorTolerance)) {
 
-            RocketVector1.SetAngleX(currentAngleX - AngleChange, false, true);
+            RocketVector1.SetAngleYaw(currentAngleX - AngleChange, false, true);
 
         }
 
-        long double currentAngleY = RocketVector1.GetAngleY();
-        long double targetAngleY = RocketVector1.GetTargetAngleY();
+        long double currentAngleY = RocketVector1.GetAnglePitch();
+        long double targetAngleY = RocketVector1.GetTargetAnglePitch();
 
         if (currentAngleY < (targetAngleY - TargetErrorTolerance)) {
 
-            RocketVector1.SetAngleY(currentAngleY + AngleChange, true);
+            RocketVector1.SetAnglePitch(currentAngleY + AngleChange, true);
 
         } else if (currentAngleY > (targetAngleY + TargetErrorTolerance)) {
 
-            RocketVector1.SetAngleY(currentAngleY - AngleChange, true);
+            RocketVector1.SetAnglePitch(currentAngleY - AngleChange, true);
 
         }
 
@@ -445,21 +445,21 @@ void UpdateRocket2() {
 
     }
 
-    long double rocketTargetAccelHorizontal = (RocketVector2.GetAccel() * cos((M_PI / 180) * RocketVector2.GetAngleY()));
+    long double rocketTargetAccelHorizontal = (RocketVector2.GetAccel() * cos((M_PI / 180) * RocketVector2.GetAnglePitch()));
 
-    if ((RocketVector2.GetAngleY() == 90) || (RocketVector2.GetAngleY() == -90)) {
+    if ((RocketVector2.GetAnglePitch() == 90) || (RocketVector2.GetAnglePitch() == -90)) {
 
         rocketTargetAccelHorizontal = 0;
 
     }
 
-    long double rocketTargetAccelVertical = (RocketVector2.GetAccel() * sin((M_PI / 180) * RocketVector2.GetAngleY()));
+    long double rocketTargetAccelVertical = (RocketVector2.GetAccel() * sin((M_PI / 180) * RocketVector2.GetAnglePitch()));
 
-    long double rocketTargetAccelX = rocketTargetAccelHorizontal * sin((M_PI / 180) * RocketVector2.GetAngleX());
+    long double rocketTargetAccelX = rocketTargetAccelHorizontal * sin((M_PI / 180) * RocketVector2.GetAngleYaw());
     long double rocketTargetAccelY = rocketTargetAccelVertical - gravityAcceleration;
-    long double rocketTargetAccelZ = rocketTargetAccelHorizontal * cos((M_PI / 180) * RocketVector2.GetAngleX());
+    long double rocketTargetAccelZ = rocketTargetAccelHorizontal * cos((M_PI / 180) * RocketVector2.GetAngleYaw());
 
-    if ((RocketVector2.GetAngleY() == 90) || (RocketVector2.GetAngleY() == -90)) {
+    if ((RocketVector2.GetAnglePitch() == 90) || (RocketVector2.GetAnglePitch() == -90)) {
 
         rocketTargetAccelZ = 0;
 
@@ -514,13 +514,13 @@ void UpdateRocket2() {
 
 void FirstTurnRocket() {
 
-    if (RocketVector1.GetAngleY() < (20 - TargetErrorTolerance)) {
+    if (RocketVector1.GetAnglePitch() < (20 - TargetErrorTolerance)) {
 
-        RocketVector1.SetAngleY(RocketVector1.GetAngleY() + AngleChange, true);
+        RocketVector1.SetAnglePitch(RocketVector1.GetAnglePitch() + AngleChange, true);
 
-    } else if (RocketVector1.GetAngleY() > (20 + TargetErrorTolerance)) {
+    } else if (RocketVector1.GetAnglePitch() > (20 + TargetErrorTolerance)) {
 
-        RocketVector1.SetAngleY(RocketVector1.GetAngleY() - AngleChange, true);
+        RocketVector1.SetAnglePitch(RocketVector1.GetAnglePitch() - AngleChange, true);
 
     } else {
 
@@ -535,13 +535,13 @@ void SecondTurnRocket() {
     bool xInPlace = false;
     bool yInPlace = false;
 
-    if (RocketVector1.GetAngleX() < (-30 - TargetErrorTolerance)) {
+    if (RocketVector1.GetAngleYaw() < (-30 - TargetErrorTolerance)) {
 
-        RocketVector1.SetAngleX(RocketVector1.GetAngleX() + AngleChange, false, true);
+        RocketVector1.SetAngleYaw(RocketVector1.GetAngleYaw() + AngleChange, false, true);
 
-    } else if (RocketVector1.GetAngleX() > (-30 + TargetErrorTolerance)) {
+    } else if (RocketVector1.GetAngleYaw() > (-30 + TargetErrorTolerance)) {
 
-        RocketVector1.SetAngleX(RocketVector1.GetAngleX() - AngleChange, false, true);
+        RocketVector1.SetAngleYaw(RocketVector1.GetAngleYaw() - AngleChange, false, true);
 
     } else {
 
@@ -549,13 +549,13 @@ void SecondTurnRocket() {
 
     }
 
-    if (RocketVector1.GetAngleY() < (0 - TargetErrorTolerance)) {
+    if (RocketVector1.GetAnglePitch() < (0 - TargetErrorTolerance)) {
 
-        RocketVector1.SetAngleY(RocketVector1.GetAngleY() + AngleChange, true);
+        RocketVector1.SetAnglePitch(RocketVector1.GetAnglePitch() + AngleChange, true);
 
-    } else if (RocketVector1.GetAngleY() > (0 + TargetErrorTolerance)) {
+    } else if (RocketVector1.GetAnglePitch() > (0 + TargetErrorTolerance)) {
 
-        RocketVector1.SetAngleY(RocketVector1.GetAngleY() - AngleChange, true);
+        RocketVector1.SetAnglePitch(RocketVector1.GetAnglePitch() - AngleChange, true);
 
     } else {
 
@@ -916,7 +916,7 @@ void InitRocket1() {
     cout << "Starting Lattitude (Z): ";
     cin >> input;
     RocketVector1.SetStartZ(input, false);
-    RocketVector1.SetAngleY(90, true);
+    RocketVector1.SetAnglePitch(90, true);
     RocketVector1.SetRadius(PlanetVector.GetRadius());
 
     cout << RocketVector1.ToStringPos();
@@ -937,7 +937,7 @@ void InitRocket2() {
     RocketVector2.SetStartY(MaxHeight);
     //RocketVector2.SetStartZ(rand() % 90 - 90, true);
     RocketVector2.SetStartZ(0, true);
-    RocketVector2.SetAngleY(-90, true);
+    RocketVector2.SetAnglePitch(-90, true);
     RocketVector2.SetRadius(PlanetVector.GetRadius());
 
     cout << RocketVector2.ToStringPos();
