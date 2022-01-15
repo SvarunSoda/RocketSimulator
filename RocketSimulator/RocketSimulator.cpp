@@ -34,9 +34,9 @@ void Delay(long double seconds);
 
 //// GLOBAL VARIABLES INITIALIZATION
 
-Vector RocketVector1;
-Vector RocketVector2;
-Vector PlanetVector;
+Vector3D RocketVector1;
+Vector3D RocketVector2;
+Vector3D PlanetVector;
 
 ofstream ParticleFile;
 
@@ -250,7 +250,7 @@ void RocketImpact() {
 
 void ParticleHit() {
 
-    Vector ParticleVector;
+    Vector3D ParticleVector;
 
     ParticleVector.SetName("Particle #" + (ParticleTracker + 1));
     ParticleVector.SetOtherName(RocketVector1.GetName());
@@ -633,8 +633,7 @@ void DrawWorldMap1() {
 
             }
 
-        }
-        else {
+        } else {
 
             cout << WorldMap[i - 1];
 
@@ -667,8 +666,7 @@ void DrawWorldMap1() {
 
             RocketFlashed = 0;
 
-        }
-        else {
+        } else {
 
             RocketFlashed++;
 
